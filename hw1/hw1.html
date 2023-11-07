@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework1</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="reverseMessage">{{nameBtn}}</button>
+        <div>
+            <ul>
+                <li v-for="(item, index) in list" :key="item.id" @click="removeElemList(index)">
+                    {{ item }}
+                </li>
+
+            </ul>
+            <button @click="addElementList">Добавить</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nameBtn: 'Перевернуть',
+                list: [
+                    "Элемент 1",
+                    "Элемент 2",
+                    "Элемент 3",
+                ],
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.nameBtn = this.nameBtn.split('').reverse().join('')
+                },
+                addElementList: function () {
+                    this.list.push("Нлвый элемент")
+                },
+                removeElemList: function (idx) {
+                    this.list.splice(idx, 1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
